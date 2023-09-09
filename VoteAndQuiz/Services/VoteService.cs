@@ -16,23 +16,7 @@ namespace VoteAndQuiz.Services
             _context = context;
             _logger = logger;
         }
-        //public int Id { get; set; }
-        //public Guid CreatorId { get; set; }
-        //[ForeignKey("CreatorId")]
-        //public User Creator { get; set; }
-
-        //public DateTime? UpdatedAt { get; set; } //TODO: Implement logic
-        //public DateTime? DeletedAt { get; set; }
-        //public DateTime CreatedAt { get; set; }
-        //public DateTime VoteEndDate { get; set; }//data do koqto e vote-a, data sled koqto slagash pechelivshi i zagubili
-
-        //public int VoteOptionId { get; set; }
-        //[ForeignKey("OptionId")]
-        //public ICollection<VoteOption> Options { get; set; } //iskrataDick.Add('vupros3', 'kolko ti e kosmat')
-
-        //public long voteVotes { get; set; }
-        //public bool IsActive { get; set; }
-        //public bool IsDeleted { get; set; }
+       
         public async Task<bool> CreateVoteAsync(User? creator, DateTime voteEndDate, ICollection<VoteOption> options)
         {
             try
@@ -180,7 +164,66 @@ namespace VoteAndQuiz.Services
                 return false;
             }
         }
+      
+        public async Task<bool> UpdateVotesAsync(int voteId)
+        {
+            try
+            {
+                var vote = await _context.Votes.FindAsync(voteId);
+                vote.UpdatedAt = DateTime.UtcNow;
+                vote.IsActive = true;
+                vote.voteVotes += 1;
+                _context.Votes.Update(vote);
+                await _context.SaveChangesAsync();
+                return true;
+                
+            }
+            catch (Exception ex)
+            {
 
-        
+                _logger.LogError(ex, "An error occurred while updating the vote.");
+                return false;
+            }
+            
+
+        }
+
+        public async Task<bool> FinishVoteAsync(int voteId)
+        {
+            try
+            {
+                var vote = await _context.Votes.FindAsync(voteId);
+                vote.VoteEndDate = DateTime.UtcNow;
+                vote.IsActive = false;
+                
+                _context.Votes.Update(vote);
+                await _context.SaveChangesAsync();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError(ex, "An error occurred while finishing the vote.");
+                return false;
+            }
+        }
+        //public int Id { get; set; }
+        //public Guid CreatorId { get; set; }
+        //[ForeignKey("CreatorId")]
+        //public User Creator { get; set; }
+
+        //public DateTime? UpdatedAt { get; set; } //TODO: Implement logic
+        //public DateTime? DeletedAt { get; set; }
+        //public DateTime CreatedAt { get; set; }
+        //public DateTime VoteEndDate { get; set; }//data do koqto e vote-a, data sled koqto slagash pechelivshi i zagubili
+
+        //public int VoteOptionId { get; set; }
+        //[ForeignKey("OptionId")]
+        //public ICollection<VoteOption> Options { get; set; } //iskrataDick.Add('vupros3', 'kolko ti e kosmat')
+
+        //public long voteVotes { get; set; }
+        //public bool IsActive { get; set; }
+        //public bool IsDeleted { get; set; }
     }
 }

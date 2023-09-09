@@ -8,6 +8,9 @@ namespace VoteAndQuiz.Services.Interfaces
         Task<Vote> GetVoteByIdAsync(int voteId);
         Task<List<Vote>> GetAllVotesAsync();
         Task<VoteOption> GetVoteResultAsync(int voteId);
+        Task<bool> UpdateVotesAsync(int voteId);
         Task<bool> DeleteVoteAsync(int voteId);
+
+        Task<bool> FinishVoteAsync(int voteId);
     }
 }

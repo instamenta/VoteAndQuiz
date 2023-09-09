@@ -16,5 +16,7 @@ namespace VoteAndQuiz.Models
         public long quizVotes { get; set; }
         public ICollection<QuizOption> Options { get; set; } //iskrataDick.Add('vupros3', 'kolko ti e kosmat')
         public string CorrectOption { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get;  set; }
     }
 }

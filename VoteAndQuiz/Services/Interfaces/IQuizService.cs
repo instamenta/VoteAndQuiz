@@ -7,7 +7,9 @@ namespace VoteAndQuiz.Services.Interfaces
         Task<Quiz> CreateQuizAsync(Quiz quiz);
         Task<Quiz> GetQuizByIdAsync(int quizId);
         Task<List<Quiz>> GetAllQuizzesAsync();
-        Task<QuizOption> CheckQuizAnswerAsync(int quizId, string userAnswer);
+       
         Task<bool> DeleteQuizAsync(int quizId);
+        Task<bool> UpdateQuizAsync(int quizId);
+        Task<bool> FinishQuizAsync(int  quizId);
     }
 }
