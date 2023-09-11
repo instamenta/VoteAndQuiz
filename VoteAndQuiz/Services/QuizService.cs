@@ -176,7 +176,7 @@ namespace VoteAndQuiz.Services
                 _context.Quizzes.Update(quiz);
                 await _context.SaveChangesAsync();
                 return true;
-
+                
             }
             catch (Exception ex)
             {

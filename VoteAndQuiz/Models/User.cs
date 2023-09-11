@@ -1,12 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace VoteAndQuiz.Models
 {
-    public class User
+    public class User: IdentityUser
     {
         [Key]
         public Guid Id { get; set; }
+        [Required]
         public string UserName { get; set; }
+        [Required]
         public string AuthId { get; set; }
         public ICollection<UserQuizAnswer> UserQuizAnswers { get; set; }
         public ICollection<UserVoteAnswer> UserVoteAnswers { get; set; }
