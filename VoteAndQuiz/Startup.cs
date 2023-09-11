@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VoteAndQuiz.Data;
+using VoteAndQuiz.Repository;
+using VoteAndQuiz.Repository.IRepository;
 using VoteAndQuiz.Services;
 using VoteAndQuiz.Services.Interfaces;
 
@@ -11,6 +13,7 @@ builder.Logging.AddConsole();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IUnitOfWork , UnitOfWork>();
 builder.Services.AddScoped<IVoteService, VoteService>();
 builder.Services.AddScoped<IQuizService, QuizService>();
 var app = builder.Build();

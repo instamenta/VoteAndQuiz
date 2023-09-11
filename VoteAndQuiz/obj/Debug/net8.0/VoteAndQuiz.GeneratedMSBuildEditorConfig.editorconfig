@@ -25,6 +25,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/SZP/Desktop/VoteAndQuiz/VoteAndQuiz/Views/Quiz/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpelxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SZP/Desktop/VoteAndQuiz/VoteAndQuiz/Views/Quiz/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpelxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SZP/Desktop/VoteAndQuiz/VoteAndQuiz/Views/Quiz/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpelxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SZP/Desktop/VoteAndQuiz/VoteAndQuiz/Views/Quiz/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpelxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/SZP/Desktop/VoteAndQuiz/VoteAndQuiz/Views/Quiz/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVpelxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

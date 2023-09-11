@@ -17,7 +17,7 @@ namespace VoteAndQuiz.Models
         
         public int VoteOptionId { get; set; }
         [ForeignKey("OptionId")]
-        public ICollection<VoteOption> Options { get; set; } //iskrataDick.Add('vupros3', 'kolko ti e kosmat')
+        public ICollection<VoteOption> Options { get; set; } 
 
         public long voteVotes { get; set; }
         public bool IsActive { get; set; }

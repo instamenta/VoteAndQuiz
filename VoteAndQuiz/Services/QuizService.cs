@@ -45,11 +45,13 @@ namespace VoteAndQuiz.Services
                 var newQuiz = new Quiz
                 {
                     CreatorId = quiz.CreatorId,
+                    Name = quiz.Name,
                     CreatedAt = DateTime.Now,
                     QuizEndDate = quiz.QuizEndDate,
                     Options = quiz.Options,
                     CorrectOption = quiz.CorrectOption,
                    IsActive =  quiz.IsActive = true,
+                   ShowQuiz = true,
                     quizVotes = 0 // Initialize vote count to 0
                     
                 };
@@ -67,43 +69,7 @@ namespace VoteAndQuiz.Services
             }
         }
 
-        public async Task<Quiz> GetQuizByIdAsync(int quizId)
-        {
-            try
-            {
-                // Assuming you have a DbSet<Vote> in your DbContext called Votes
-                var quiz = await _context.Quizzes.FindAsync(quizId);
-                                // If the vote with the specified ID does not exist, FindAsync returns null
-                return quiz;
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions, log errors, or return appropriate responses
-                // For example, you can log the exception and return null
-                _logger.LogError(ex, "An error occurred while retrieving a quiz by ID.");
-                return null;
-            }
-        }
 
-        public async Task<List<Quiz>> GetAllQuizzesAsync()
-        {
-
-            try
-            {
-                // Assuming you have a DbSet<Vote> in your DbContext called Votes
-                var quizzes = await _context.Quizzes.ToListAsync();
-
-                return quizzes;
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions, log errors, or return appropriate responses
-                // For example, you can log the exception and return an empty list
-                _logger.LogError(ex, "An error occurred while retrieving all quizzes.");
-                return new List<Quiz>();
-
-            }
-        }
       
 
         public async Task<bool> DeleteQuizAsync(int quizId)
@@ -172,6 +138,7 @@ namespace VoteAndQuiz.Services
                 var quiz = await _context.Quizzes.FindAsync(quizId);
                 quiz.QuizEndDate = DateTime.UtcNow;
                 quiz.IsActive = false;
+                quiz.ShowQuiz = false;
                 quiz.UpdatedAt = DateTime.UtcNow;
                 _context.Quizzes.Update(quiz);
                 await _context.SaveChangesAsync();
@@ -189,3 +156,47 @@ namespace VoteAndQuiz.Services
         // Implement other methods as needed
     }
 }
+
+
+
+
+
+
+
+//public async Task<Quiz> GetQuizByIdAsync(int quizId)
+//{
+//    try
+//    {
+//        // Assuming you have a DbSet<Vote> in your DbContext called Votes
+//        var quiz = await _context.Quizzes.FindAsync(quizId);
+//                        // If the vote with the specified ID does not exist, FindAsync returns null
+//        return quiz;
+//    }
+//    catch (Exception ex)
+//    {
+//        // Handle exceptions, log errors, or return appropriate responses
+//        // For example, you can log the exception and return null
+//        _logger.LogError(ex, "An error occurred while retrieving a quiz by ID.");
+//        return null;
+//    }
+//}
+
+//public async Task<List<Quiz>> GetAllQuizzesAsync()
+//{
+
+//    try
+//    {
+//        // Assuming you have a DbSet<Vote> in your DbContext called Votes
+//        var quizzes = await _context.Quizzes.ToListAsync();
+
+//        return quizzes;
+//    }
+//    catch (Exception ex)
+//    {
+//        // Handle exceptions, log errors, or return appropriate responses
+//        // For example, you can log the exception and return an empty list
+//        _logger.LogError(ex, "An error occurred while retrieving all quizzes.");
+//        return new List<Quiz>();
+
+//    }
+//}
